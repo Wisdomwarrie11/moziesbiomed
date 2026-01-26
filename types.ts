@@ -1,31 +1,28 @@
+export interface CategoryItem {
+  id: string;
+  name: string;
+}
 
 export interface Product {
   id: string;
   name: string;
   description: string;
-  category: string;
   price?: string;
+  categoryId: string;
   imageUrl: string;
-  specifications: string[];
-}
-
-export interface Service {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
+  specifications: string[]; // For optional details
 }
 
 export interface GalleryItem {
   id: string;
   imageUrl: string;
   caption: string;
+  description?: string;
+  date: string;
 }
 
-export enum Category {
-  DIAGNOSTIC = 'Diagnostic Equipment',
-  THERAPEUTIC = 'Therapeutic Devices',
-  MONITORING = 'Monitoring Systems',
-  SURGICAL = 'Surgical Instruments',
-  LABORATORY = 'Laboratory Solutions'
+export interface ServiceDetail {
+  title: string;
+  description: string;
+  items: string[];
 }

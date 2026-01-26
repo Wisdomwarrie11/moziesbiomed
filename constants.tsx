@@ -1,111 +1,87 @@
+import { CategoryItem, Product, GalleryItem } from './types';
 
-import React from 'react';
-import { Product, Service, Category } from './types';
-
-export const COLORS = {
-  primary: '#DC2626', // Vibrant Red
-  secondary: '#4B5563', // Professional Grey
-  accent: '#111827', // Darker Grey/Black
-};
+export const INITIAL_CATEGORIES: CategoryItem[] = [
+  { id: 'cat-rad', name: 'Radiology Solutions' },
+  { id: 'cat-den', name: 'Dental Solutions' },
+  { id: 'cat-lab', name: 'Laboratory Solutions' }
+];
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
-    id: '1',
-    name: 'Advanced Patient Monitor',
-    description: 'Multi-parameter patient monitoring system for critical care units.',
-    category: Category.MONITORING,
-    imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800',
-    specifications: ['ECG', 'SpO2', 'NIBP', 'TEMP', '12.1 inch display']
-  },
-  {
-    id: '2',
-    name: 'Digital X-Ray System',
-    description: 'High-resolution digital radiography for precise diagnostics.',
-    category: Category.DIAGNOSTIC,
+    id: 'p-placeholder-1',
+    name: 'Standard X-Ray Unit',
+    description: 'High-performance diagnostic imaging system for general biomedical use.',
+    price: '₦10,000,000',
+    categoryId: 'cat-rad',
     imageUrl: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&q=80&w=800',
-    specifications: ['Low dose radiation', 'Instant image processing', 'Wireless detector']
-  },
-  {
-    id: '3',
-    name: 'Infusion Pump Series X',
-    description: 'Intelligent volumetric infusion pump for accurate medication delivery.',
-    category: Category.THERAPEUTIC,
-    imageUrl: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&q=80&w=800',
-    specifications: ['Dual CPU', 'Anti-bolus system', 'WiFi connectivity']
+    specifications: ['High frequency', 'Digital ready']
   }
 ];
 
-export const SERVICES: Service[] = [
-  {
-    id: 's1',
-    title: 'Medical Equipment Maintenance',
-    description: 'Comprehensive preventive and corrective maintenance for all medical devices.',
-    icon: 'wrench'
-  },
-  {
-    id: 's2',
-    title: 'Clinical Engineering Consultancy',
-    description: 'Strategic planning and advisory services for healthcare facilities.',
-    icon: 'clipboard-list'
-  },
-  {
-    id: 's3',
-    title: 'Installation & Training',
-    description: 'Expert installation of medical systems and technical training for staff.',
-    icon: 'users'
+export const INITIAL_GALLERY: GalleryItem[] = [
+  { 
+    id: 'g-placeholder-1', 
+    imageUrl: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800', 
+    caption: 'Recent Installation in Lagos', 
+    date: new Date().toISOString() 
   }
 ];
 
-export const WHY_CHOOSE_US = [
+export const SERVICES_CONTENT = [
   {
-    title: 'Expert Engineering',
-    description: 'Our team comprises highly certified clinical engineers with years of field experience.',
-    icon: 'verified'
+    category: 'Biomedical Services',
+    description: 'Specialized clinical engineering support focusing on technical precision, installation, and radiation safety.',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200',
+    cta: 'Consult an Engineer',
+    subsections: [
+      { 
+        title: 'Hardware Maintenance', 
+        items: ['Preventive Maintenance (PPM)', 'On-site corrective repairs', 'Calibration services'] 
+      },
+      { 
+        title: 'Radiation Safety', 
+        items: ['Leadlining installation', 'Shielding calculation', 'Radiation surveys'] 
+      }
+    ]
   },
   {
-    title: 'Cost-Effective',
-    description: 'We optimize medical asset life-cycles to reduce operational overhead for facilities.',
-    icon: 'savings'
+    category: 'Project Management',
+    description: 'Strategic management of healthcare facility setup from blueprint to full engineering operation.',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200',
+    cta: 'Plan Your Facility',
+    subsections: [
+      { 
+        title: 'Turnkey Setup', 
+        items: ['Facility layout design', 'Equipment procurement scheduling', 'Installation oversight'] 
+      }
+    ]
   },
   {
-    title: 'Rapid Response',
-    description: 'Our 24/7 technical support ensures minimal downtime for critical life-saving equipment.',
-    icon: 'bolt'
-  }
-];
-
-export const WHO_SERVICES_FOR = [
-  {
-    title: 'Private Hospitals',
-    description: 'Scaling private facilities with high-end diagnostic and surgical tools.',
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    title: 'Public Health Centers',
-    description: 'Ensuring public facilities maintain standard care through reliable equipment.',
-    image: 'https://images.unsplash.com/photo-1586773860418-d3b97978c65c?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    title: 'Diagnostic Labs',
-    description: 'Precision tools for accurate medical testing and research laboratories.',
-    image: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=600'
+    category: 'Engineering Consultancy',
+    description: 'Specialized advisory services for technological upgrades and regulatory compliance.',
+    image: 'https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=1200',
+    cta: 'Consult Our Experts',
+    subsections: [
+      { 
+        title: 'Strategic Advisory', 
+        items: ['Equipment lifecycle audit', 'ROI analysis for upgrades', 'Regulatory standard audits'] 
+      }
+    ]
   }
 ];
 
 export const HERO_SLIDES = [
   {
-    image: 'surgery.jpeg',
-    title: 'Leading Biomedical Solutions',
-    subtitle: 'High-quality engineering solutions for Nigerian healthcare.'
-  },
-  {
-    image: 'simulator.jpeg',
-    title: 'Technologically Driven',
-    subtitle: 'Innovation at the heart of healthcare delivery.'
-  },
-  {
-    image: 'uss.jpeg',
-    title: 'Holistic Approach',
-    subtitle: 'Sustainable engineering for long-term clinical excellence.'
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1600',
+    title: 'Biomedical Engineering Excellence For Nigeria',
+    subtitle: 'Expert supply, installation, and maintenance of mission-critical medical hardware.'
   }
+];
+
+export const WHY_CHOOSE_US = [
+  { title: 'Engineering Mastery', description: 'Certified engineers for all clinical equipment classes.' }
+];
+
+export const WHO_SERVICES_FOR = [
+  { title: 'Health Facilities', description: 'Turnkey radiology and imaging setups.', image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800' }
 ];

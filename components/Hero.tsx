@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative h-[600px] md:h-[700px] lg:h-[800px] w-full overflow-hidden bg-black">
+    <div className="relative h-[650px] md:h-[750px] lg:h-[850px] w-full overflow-hidden bg-black">
       {HERO_SLIDES.map((slide, index) => (
         <div
           key={index}
@@ -22,8 +22,9 @@ const Hero: React.FC = () => {
             index === current ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
           }`}
         >
-          {/* Red/Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-red-950/80 via-black/50 to-transparent z-10" />
+          {/* Enhanced Overlay with stronger side-shading for readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-red-950/20 to-transparent z-10" />
           
           <img
             src={slide.image}
@@ -31,24 +32,31 @@ const Hero: React.FC = () => {
             className="w-full h-full object-cover"
           />
           
-          <div className="absolute inset-0 z-20 flex items-center px-6 sm:px-12 lg:px-24">
-            <div className={`max-w-4xl transition-all duration-1000 delay-300 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-              <div className="inline-block px-5 py-2.5 bg-red-600/20 backdrop-blur-sm rounded-full text-red-400 text-xs font-black tracking-[0.3em] uppercase mb-8 border border-red-500/20">
-                Mozies Engineering Excellence
+          {/* Responsive container with fixed margins for large screens */}
+          <div className="absolute inset-0 z-20 flex items-center px-6 sm:px-16 lg:px-32 xl:px-56">
+            <div className={`max-w-4xl transition-all duration-1000 delay-300 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-red-600 rounded-full text-white text-[10px] font-black tracking-[0.4em] uppercase mb-10 shadow-xl shadow-red-900/20">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Mozies BioMed Engineering
               </div>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] mb-8 tracking-tighter">
+              
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1] mb-10 tracking-tighter">
                 {slide.title.split(' ').map((word, i) => (
-                  <span key={i} className={i % 2 !== 0 ? 'text-red-600 block sm:inline' : 'block sm:inline mr-4'}>{word}</span>
+                  <span key={i} className={i % 2 !== 0 ? 'text-red-600 block' : 'block'}>
+                    {word}
+                  </span>
                 ))}
               </h1>
-              <p className="text-lg md:text-2xl text-gray-200 mb-12 max-w-xl font-medium leading-relaxed opacity-90">
+              
+              <p className="text-lg md:text-2xl text-gray-300 mb-12 max-w-2xl font-medium leading-relaxed opacity-90 border-l-4 border-red-600 pl-8">
                 {slide.subtitle}
               </p>
+              
               <div className="flex flex-col sm:flex-row gap-6">
-                <Link to="/products" className="bg-red-600 text-white px-10 py-5 rounded-[20px] font-black text-lg hover:scale-105 hover:bg-red-700 transition-all shadow-2xl shadow-red-900/40 text-center uppercase tracking-wider">
-                  Browse Products
+                <Link to="/products" className="bg-red-600 text-white px-12 py-5 rounded-[24px] font-black text-lg hover:scale-105 hover:bg-red-700 transition-all shadow-2xl shadow-red-900/40 text-center uppercase tracking-widest">
+                  View Catalog
                 </Link>
-                <Link to="/services" className="bg-white/10 text-white backdrop-blur-md border-2 border-white/20 px-10 py-5 rounded-[20px] font-black text-lg hover:bg-white/20 hover:border-white transition-all text-center uppercase tracking-wider">
+                <Link to="/services" className="bg-white/10 text-white backdrop-blur-md border-2 border-white/20 px-12 py-5 rounded-[24px] font-black text-lg hover:bg-white/20 hover:border-white transition-all text-center uppercase tracking-widest">
                   Our Expertise
                 </Link>
               </div>
@@ -57,19 +65,19 @@ const Hero: React.FC = () => {
         </div>
       ))}
 
-      {/* Slide Indicators - Custom Shape */}
-      <div className="absolute bottom-12 right-6 lg:right-24 z-30 flex items-center space-x-6">
+      {/* Slide Indicators - Moved to left to align with text on large screens */}
+      <div className="absolute bottom-12 left-6 sm:left-16 lg:left-32 xl:left-56 z-30 flex items-center space-x-8">
         {HERO_SLIDES.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className="group flex items-center gap-3"
+            className="group flex items-center gap-4"
           >
-            <span className={`text-[12px] font-black tracking-widest transition-all ${index === current ? 'text-red-500 scale-125' : 'text-white/40 group-hover:text-white'}`}>
+            <span className={`text-[12px] font-black transition-all ${index === current ? 'text-red-600 scale-125' : 'text-white/40'}`}>
               0{index + 1}
             </span>
-            <div className={`h-[2px] rounded-full transition-all duration-700 ${
-              index === current ? 'w-16 bg-red-500' : 'w-4 bg-white/20'
+            <div className={`h-[2px] transition-all duration-700 ${
+              index === current ? 'w-20 bg-red-600' : 'w-4 bg-white/20'
             }`} />
           </button>
         ))}

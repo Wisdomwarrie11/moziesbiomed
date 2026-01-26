@@ -1,86 +1,115 @@
-
-import React, { useState } from 'react';
-import { INITIAL_PRODUCTS } from '../constants';
-import { Category } from '../types';
+import React, { useState, useEffect } from 'react';
+import { db } from '../firebase';
+import { collection, onSnapshot } from 'firebase/firestore';
+import { Product, CategoryItem } from '../types';
+import { useLocation } from 'react-router-dom';
 
 const Products: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<CategoryItem[]>([]);
+  const [selectedCat, setSelectedCat] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
-  const filteredProducts = selectedCategory 
-    ? INITIAL_PRODUCTS.filter(p => p.category === selectedCategory)
-    : INITIAL_PRODUCTS;
+  useEffect(() => {
+    const unsubCats = onSnapshot(collection(db, 'categories'), (snapshot) => {
+      setCategories(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as CategoryItem)));
+    });
+
+    const unsubProds = onSnapshot(collection(db, 'products'), (snapshot) => {
+      setProducts(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Product)));
+      setLoading(false);
+    });
+
+    return () => { unsubCats(); unsubProds(); };
+  }, []);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const catId = queryParams.get('category');
+    setSelectedCat(catId);
+  }, [location.search]);
+
+  const filtered = products.filter(p => !selectedCat || p.categoryId === selectedCat);
+
+  if (loading) return (
+    <div className="py-40 text-center">
+      <div className="w-12 h-12 border-4 border-red-600 border-t-transparent animate-spin rounded-full mx-auto mb-6"></div>
+      <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-xs">Accessing Engineering Database...</p>
+    </div>
+  );
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-24">
-      {/* Banner */}
-      <div className="bg-white border-b border-gray-100 py-20 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl">
-            <div className="inline-block px-5 py-2 bg-red-50 rounded-full text-red-600 text-xs font-black tracking-[0.2em] uppercase mb-6">
-              Equipment Store
-            </div>
-            <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-8 uppercase tracking-tighter">Precision <span className="text-red-600">Inventory</span></h1>
+    <div className="bg-gray-50 min-h-screen pb-32">
+      <div className="bg-white border-b border-gray-100 py-24 md:py-32">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="max-w-3xl mb-12">
+            <span className="inline-block px-5 py-2 bg-red-50 rounded-full text-red-600 text-[10px] font-black tracking-[0.4em] uppercase mb-6">Engineering Portfolio</span>
+            <h1 className="text-5xl md:text-7xl font-black text-gray-900 uppercase tracking-tighter">Biomedical <span className="text-red-600">Solutions</span></h1>
           </div>
           
-          {/* Categories - Organic Chips */}
-          <div className="flex flex-wrap gap-3 mt-12">
+          <div className="flex flex-wrap gap-4">
             <button 
-              onClick={() => setSelectedCategory(null)}
-              className={`px-8 py-3.5 rounded-2xl text-[12px] font-black transition-all uppercase tracking-widest ${!selectedCategory ? 'bg-red-600 text-white shadow-xl shadow-red-900/20' : 'bg-white border border-gray-200 text-gray-600 hover:border-red-600'}`}
+              onClick={() => setSelectedCat(null)} 
+              className={`px-8 py-4 rounded-[20px] text-[10px] font-black uppercase tracking-widest transition-all ${!selectedCat ? 'bg-red-600 text-white shadow-2xl shadow-red-900/30' : 'bg-white border border-gray-200 text-gray-500 hover:border-red-600'}`}
             >
-              All Equipment
+              All Hardware
             </button>
-            {Object.values(Category).map(cat => (
+            {categories.map(c => (
               <button 
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-8 py-3.5 rounded-2xl text-[12px] font-black transition-all uppercase tracking-widest ${selectedCategory === cat ? 'bg-red-600 text-white shadow-xl shadow-red-900/20' : 'bg-white border border-gray-200 text-gray-600 hover:border-red-600'}`}
+                key={c.id} 
+                onClick={() => setSelectedCat(c.id)} 
+                className={`px-8 py-4 rounded-[20px] text-[10px] font-black uppercase tracking-widest transition-all ${selectedCat === c.id ? 'bg-red-600 text-white shadow-2xl shadow-red-900/30' : 'bg-white border border-gray-200 text-gray-500 hover:border-red-600'}`}
               >
-                {cat}
+                {c.name}
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Grid */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16 md:py-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-10">
-          {filteredProducts.map(product => (
-            <div key={product.id} className="bg-white rounded-[45px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 group flex flex-col h-full border border-gray-100">
-              <div className="aspect-[4/3] relative overflow-hidden bg-gray-50">
-                <img 
-                  src={product.imageUrl} 
-                  alt={product.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute top-6 left-6 bg-red-600 text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-lg">
-                  {product.category}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {filtered.map(product => (
+              <div key={product.id} className="bg-white rounded-[60px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group flex flex-col h-full">
+                <div className="aspect-[4/3] rounded-[40px] overflow-hidden mb-8 relative bg-gray-50 shadow-inner">
+                  <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute top-6 left-6">
+                    <span className="bg-red-600 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl">
+                      {categories.find(c => c.id === product.categoryId)?.name || 'Biomedical'}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="p-10 flex flex-col flex-grow">
-                <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-red-600 transition-colors uppercase tracking-tight">
-                  {product.name}
-                </h3>
-                <p className="text-gray-500 text-sm mb-8 flex-grow leading-relaxed font-medium">
+                <h3 className="text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">{product.name}</h3>
+                <p className="text-red-600 text-sm font-black uppercase tracking-[0.2em] mb-4">
+                  {product.price || 'Quote Available'}
+                </p>
+                <p className="text-gray-500 text-sm font-medium leading-relaxed mb-8 flex-grow">
                   {product.description}
                 </p>
-                <div className="space-y-6">
-                  <div className="flex flex-wrap gap-2">
-                    {product.specifications.slice(0, 3).map((spec, i) => (
-                      <span key={i} className="text-[10px] bg-gray-50 text-gray-600 font-black border border-gray-100 px-3 py-1 rounded-lg uppercase tracking-wider">
-                        {spec}
+                
+                {product.specifications && product.specifications.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {product.specifications.map((s, i) => (
+                      <span key={i} className="text-[9px] font-black uppercase tracking-wider text-gray-400 border border-gray-100 px-3 py-1.5 rounded-xl bg-gray-50">
+                        {s}
                       </span>
                     ))}
                   </div>
-                  <button className="w-full bg-gray-900 text-white font-black py-5 rounded-[22px] hover:bg-red-600 transition-all text-xs border border-gray-800 uppercase tracking-[0.2em] shadow-xl hover:shadow-red-900/20">
-                    Request Pricing
-                  </button>
-                </div>
+                )}
+                <button className="w-full bg-gray-900 text-white py-5 rounded-[22px] font-black text-[11px] uppercase tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl hover:shadow-red-900/20">
+                  Request Technical Quote
+                </button>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-40">
+            <h2 className="text-2xl font-black text-gray-300 uppercase tracking-tighter">Inventory Syncing</h2>
+            <p className="text-gray-400 font-bold uppercase tracking-widest text-xs mt-4">Consult our engineering team for custom deployments.</p>
+          </div>
+        )}
       </div>
     </div>
   );
