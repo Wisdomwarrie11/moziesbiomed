@@ -95,7 +95,7 @@ const Admin: React.FC = () => {
       if (!resp.ok) throw new Error(res.error?.message || "Upload failed");
       return res.secure_url;
     } catch (err: any) {
-      alert(`Error in loading: ${err.message}`);
+      alert(`${err.message}`);
       return null;
     } finally { 
       setUploading(false); 
@@ -168,7 +168,7 @@ const Admin: React.FC = () => {
   if (loading) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white">
       <div className="w-12 h-12 border-4 border-red-600 border-t-transparent animate-spin rounded-full"></div>
-      <p className="mt-4 font-black text-red-600 uppercase tracking-widest text-xs">Initializing Secure Shell...</p>
+      <p className="mt-4 font-black text-red-600 uppercase tracking-widest text-xs">Loading...</p>
     </div>
   );
 
@@ -281,7 +281,7 @@ const Admin: React.FC = () => {
                     <input required value={prodForm.name} onChange={e => setProdForm({...prodForm, name: e.target.value})} className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 font-bold text-xs" placeholder="e.g. X-Ray Gen 3" />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-[9px] font-black text-gray-400 uppercase tracking-widest ml-4">MSRP (Optional)</label>
+                    <label className="text-[9px] font-black text-gray-400 uppercase tracking-widest ml-4">Price (Optional)</label>
                     <input value={prodForm.price} onChange={e => setProdForm({...prodForm, price: e.target.value})} className="w-full bg-gray-50 border-none rounded-2xl px-6 py-4 font-bold text-xs" placeholder="₦0,000,000" />
                   </div>
                 </div>
