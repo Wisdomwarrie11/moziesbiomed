@@ -17,7 +17,7 @@ const AboutUs: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-20 lg:gap-32 items-center">
           <div className="space-y-8 text-gray-700 leading-relaxed text-lg">
             <h2 className="font-black text-gray-900 text-3xl md:text-4xl uppercase tracking-tighter leading-tight">
-              Leading <span className="text-red-600">Biomedical Engineering</span> Firm in Nigeria
+              World-class <span className="text-red-600">Biomedical Engineering</span> Firm in Nigeria
             </h2>
             <p className="font-bold text-gray-500 italic border-l-4 border-red-600 pl-6">
               With extensive experience in providing high-quality biomedical solutions to major health facilities nationwide.
@@ -46,7 +46,7 @@ const AboutUs: React.FC = () => {
           <div className="absolute top-0 right-0 w-96 h-96 bg-red-600 rounded-full opacity-10 blur-[100px]"></div>
           <div className="max-w-4xl relative z-10">
             <h2 className="text-white text-4xl md:text-5xl font-black mb-10 tracking-tight uppercase">
-              Technologically <span className="text-red-600">Precise</span>
+              OUR <span className="text-red-600">CORE</span>
             </h2>
             <div className="space-y-8 text-gray-400 leading-relaxed text-xl font-medium">
               <p>
