@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.15),transparent_70%)]"></div>
         <div className="relative z-10">
           <span className="text-red-600 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Direct Protocol</span>
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter">Initialize <span className="text-red-600">Contact</span></h1>
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter">contact <span className="text-red-600">Us</span></h1>
           <div className="w-24 h-2 bg-red-600 mx-auto rounded-full"></div>
         </div>
       </div>
@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   className="w-full bg-white border-none rounded-3xl px-8 py-5 font-bold text-gray-900 focus:ring-2 focus:ring-red-600/20 transition-all shadow-sm"
-                  placeholder="John Doe"
+                  placeholder="First and Last name"
                 />
               </div>
               <div className="space-y-2">
@@ -72,10 +72,7 @@ const Contact: React.FC = () => {
                 type="submit"
                 className="w-full bg-red-600 text-white py-7 rounded-[30px] font-black text-lg uppercase tracking-widest hover:bg-red-700 hover:scale-[1.02] transition-all shadow-2xl shadow-red-900/30 flex items-center justify-center gap-4"
               >
-                Connect on WhatsApp
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793 0-.852.448-1.271.607-1.445.16-.173.348-.217.464-.217.115 0 .231.001.332.005.109.004.258-.041.404.311.145.352.492 1.203.536 1.289.044.087.073.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.101-.177.211-.077.385.101.174.445.733.955 1.187.657.585 1.21.766 1.383.853.174.087.275.072.376-.044.101-.116.434-.506.549-.68.116-.174.232-.145.391-.087.159.058 1.013.477 1.187.564.174.087.289.13.332.203.045.072.045.419-.1.824z"/>
-                </svg>
+                Send
               </button>
             </div>
           </form>
