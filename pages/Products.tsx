@@ -35,7 +35,7 @@ const Products: React.FC = () => {
   if (loading) return (
     <div className="py-40 text-center">
       <div className="w-12 h-12 border-4 border-red-600 border-t-transparent animate-spin rounded-full mx-auto mb-6"></div>
-      <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-xs">Accessing Engineering Database...</p>
+      <p className="text-gray-400 font-black uppercase tracking-[0.3em] text-xs">Loading...</p>
     </div>
   );
 

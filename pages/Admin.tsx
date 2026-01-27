@@ -6,7 +6,7 @@ import { Product, CategoryItem, GalleryItem } from '../types';
 import { INITIAL_CATEGORIES } from '../constants';
 
 const CLOUDINARY_UPLOAD_PRESET = 'mozies_unsigned'; 
-const CLOUDINARY_CLOUD_NAME = 'du87lncx2'; 
+const CLOUDINARY_CLOUD_NAME = 'du87lncx2'; // Updated from error logs
 
 const Admin: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -74,7 +74,7 @@ const Admin: React.FC = () => {
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
     } catch (err) {
-      alert("Authentication Failed: Please verify your administrator credentials.");
+      alert("Authentication Failed: Please verify your email and password");
     } finally {
       setIsLoggingIn(false);
     }
@@ -95,7 +95,7 @@ const Admin: React.FC = () => {
       if (!resp.ok) throw new Error(res.error?.message || "Upload failed");
       return res.secure_url;
     } catch (err: any) {
-      alert(`Cloudinary Error: ${err.message}`);
+      alert(`Error in loading: ${err.message}`);
       return null;
     } finally { 
       setUploading(false); 
@@ -178,7 +178,7 @@ const Admin: React.FC = () => {
         <div className="w-full max-w-md">
           <form onSubmit={handleLogin} className="bg-white p-12 rounded-[50px] shadow-2xl border border-gray-100 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-2 bg-red-600"></div>
-            <h1 className="text-3xl font-black text-center mb-10 text-gray-900 uppercase tracking-tighter">ADMIN LOGIN </h1>
+            <h1 className="text-3xl font-black text-center mb-10 text-gray-900 uppercase tracking-tighter">ENGINEERING <span className="text-red-600 text-sm block tracking-[0.3em]">COMMAND CENTER</span></h1>
             
             <div className="space-y-6">
               <div className="space-y-1">
