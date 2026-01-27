@@ -144,7 +144,7 @@ const Home: React.FC = () => {
       </section> */}
 
       {/* Services Spectrum: Diversity in Support */}
-      <section className="py-32 bg-white">
+      <section className="py-30 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-gray-900 p-16 rounded-[60px] text-white space-y-8 md:col-span-2 relative overflow-hidden group">
@@ -178,7 +178,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* High-Impact CTA */}
-      <section className="py-24 px-6">
+      <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto bg-gray-950 rounded-[60px] p-12 md:p-32 text-center relative overflow-hidden shadow-3xl shadow-red-900/10">
           {/* Animated Background Pulse */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.15),transparent_70%)] animate-pulse"></div>
@@ -188,7 +188,7 @@ const Home: React.FC = () => {
               Initialize Your <br/><span className="text-red-600 underline decoration-red-900/50 decoration-8 underline-offset-8 italic">Clinical Strategy</span>
             </h2>
             <p className="text-gray-400 text-lg md:text-xl font-bold uppercase tracking-[0.2em] max-w-2xl mx-auto">
-              Ready to deploy world-class biomedical solutions in your facility?
+              Ready to implement world-class biomedical solutions in your facility?
             </p>
             <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
               <Link to="/contact" className="bg-red-600 text-white px-16 py-7 rounded-[28px] font-black text-xl hover:scale-105 hover:bg-red-700 transition-all shadow-2xl shadow-red-900/40 uppercase tracking-widest">
