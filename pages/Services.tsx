@@ -1,71 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import { SERVICES_CONTENT } from '../constants';
 
+const EngineeringIcon = ({ index }: { index: number }) => {
+  const icons = [
+    // Biomedical Services Icon
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+    </svg>,
+    // Project Management Icon
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+      <line x1="3" y1="9" x2="21" y2="9"/>
+      <line x1="9" y1="21" x2="9" y2="9"/>
+    </svg>,
+    // Engineering Consultancy Icon
+    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+      <line x1="12" y1="22.08" x2="12" y2="12"/>
+    </svg>
+  ];
+  return icons[index] || icons[0];
+};
+
 const Services: React.FC = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide(prev => (prev + 1) % SERVICES_CONTENT.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="bg-white overflow-hidden pb-20">
-      {/* Services Hero Carousel */}
-      <section className="relative h-[550px] md:h-[650px] bg-black">
-        {SERVICES_CONTENT.map((service, index) => (
-          <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="absolute inset-0 bg-gradient-to-r from-red-950/90 via-black/40 to-transparent z-10"></div>
-            <img src={service.image} className="w-full h-full object-cover" alt={service.category} />
-            <div className="absolute inset-0 z-20 flex items-center px-6 md:px-24 max-w-7xl mx-auto">
-              <div className={`max-w-2xl transition-all duration-1000 delay-300 ${index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
-                <div className="inline-block px-5 py-2 bg-red-600 text-white text-[10px] font-black uppercase tracking-[0.4em] rounded-full mb-8 shadow-xl shadow-red-900/40">Expertise Area 0{index + 1}</div>
-                <h1 className="text-5xl md:text-7xl font-black text-white mb-8 uppercase tracking-tighter leading-none">{service.category}</h1>
-                <p className="text-lg md:text-2xl text-gray-300 font-medium leading-relaxed mb-12 opacity-90 border-l-4 border-red-600 pl-8">
-                  {service.description}
-                </p>
-                <button className="bg-white text-gray-900 px-10 py-5 rounded-[22px] font-black text-xs uppercase tracking-widest hover:bg-red-600 hover:text-white transition-all">
-                  {service.cta || 'Get In Touch'}
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
-        <div className="absolute bottom-12 right-6 md:right-24 z-30 flex gap-4">
-          {SERVICES_CONTENT.map((_, idx) => (
-            <button key={idx} onClick={() => setCurrentSlide(idx)} className={`h-2 rounded-full transition-all ${idx === currentSlide ? 'w-16 bg-red-600' : 'w-4 bg-white/20 hover:bg-white/40'}`} />
-          ))}
+      {/* Services Header */}
+      <section className="bg-gray-950 py-32 md:py-48 px-6 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(220,38,38,0.1),transparent_70%)]"></div>
+        <div className="relative z-10">
+          <span className="text-red-600 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Our Expertise</span>
+          <h1 className="text-5xl md:text-8xl font-black text-white mb-8 uppercase tracking-tighter">Biomedical <span className="text-red-600">Pillars</span></h1>
+          <p className="max-w-2xl mx-auto text-gray-400 font-bold uppercase tracking-widest text-sm">Strategic engineering and technological orchestration for modern healthcare.</p>
         </div>
       </section>
 
-      {/* Services Detail Sections */}
+      {/* Services Grid */}
       <section className="py-24 md:py-40">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-40">
-          {SERVICES_CONTENT.map((service, idx) => (
-            <div key={idx} className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 lg:gap-32 items-center`}>
-              <div className="w-full lg:w-1/2 space-y-12">
-                <div>
-                  <span className="text-red-600 block text-[10px] font-black tracking-[0.5em] mb-4 uppercase">Clinical Engineering Pillar</span>
-                  <h2 className="text-4xl md:text-6xl font-black text-gray-900 uppercase tracking-tighter leading-none">
-                    {service.category}
-                  </h2>
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {SERVICES_CONTENT.map((service, idx) => (
+              <div key={idx} className="flex flex-col bg-gray-50 rounded-[60px] p-12 border border-gray-100 hover:bg-white hover:shadow-[0_50px_100px_-20px_rgba(220,38,38,0.15)] transition-all duration-500 group">
+                <div className="w-20 h-20 bg-red-600 text-white rounded-[28px] flex items-center justify-center mb-10 shadow-xl shadow-red-900/20 group-hover:rotate-6 transition-transform">
+                  <EngineeringIcon index={idx} />
                 </div>
                 
-                <div className="grid sm:grid-cols-1 gap-10">
+                <h2 className="text-3xl font-black text-gray-900 uppercase tracking-tighter mb-6 group-hover:text-red-600 transition-colors">
+                  {service.category}
+                </h2>
+                
+                <p className="text-gray-500 font-medium leading-relaxed mb-10 flex-grow">
+                  {service.description}
+                </p>
+
+                <div className="space-y-8 mb-12">
                   {service.subsections.map((sub, sIdx) => (
-                    <div key={sIdx} className="bg-gray-50 p-10 rounded-[50px] border border-gray-100 hover:bg-white hover:shadow-2xl transition-all duration-500 group">
-                      <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-12 bg-red-600 text-white rounded-2xl flex items-center justify-center font-black text-xl shadow-lg shadow-red-200">
-                          {sIdx + 1}
-                        </div>
-                        <h3 className="text-xl font-black text-gray-900 uppercase tracking-tight group-hover:text-red-600 transition-colors">{sub.title}</h3>
-                      </div>
-                      <ul className="grid sm:grid-cols-2 gap-4">
+                    <div key={sIdx} className="space-y-4">
+                      <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em]">{sub.title}</h3>
+                      <ul className="space-y-2">
                         {sub.items.map((item, iIdx) => (
-                          <li key={iIdx} className="flex items-start gap-3 text-xs text-gray-500 font-bold uppercase tracking-wider leading-relaxed">
-                            <span className="w-2 h-2 bg-red-600 rounded-full shrink-0 mt-1"></span>
+                          <li key={iIdx} className="flex items-center gap-3 text-[11px] font-black text-gray-900 uppercase tracking-wider">
+                            <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
                             {item}
                           </li>
                         ))}
@@ -74,59 +70,34 @@ const Services: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="pt-6">
-                  <button className="bg-gray-900 text-white px-12 py-5 rounded-[24px] font-black text-xs uppercase tracking-[0.2em] hover:bg-red-600 transition-all shadow-xl hover:shadow-red-900/20">
-                    {service.cta}
-                  </button>
-                </div>
+                <button className="w-full bg-gray-900 text-white py-6 rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-red-600 transition-all">
+                  Consult Experts
+                </button>
               </div>
-
-              <div className="w-full lg:w-1/2 relative">
-                <div className="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl relative z-10 border-8 border-gray-50">
-                   <img src={service.image} alt={service.category} className="w-full h-full object-cover" />
-                </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-12 -right-12 w-80 h-80 bg-red-100 rounded-full blur-[100px] opacity-60 -z-10"></div>
-                <div className="absolute top-1/2 -left-12 w-32 h-32 bg-gray-100 rounded-[30%] -z-10 rotate-12 opacity-50"></div>
-                <div className="absolute -top-6 -right-6 bg-red-600/10 w-24 h-24 rounded-full -z-10"></div>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* CTA Section - Leadling Specific */}
+      {/* Engineering Stats */}
       <section className="max-w-7xl mx-auto px-6 mb-20">
-        <div className="bg-gray-900 rounded-[60px] py-24 md:py-32 relative overflow-hidden text-center md:text-left shadow-2xl">
-          <div className="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none">
-             <svg viewBox="0 0 100 100" className="w-full h-full text-red-600" fill="currentColor"><path d="M0,0 L100,0 L100,100 Z" opacity="0.1"/></svg>
+        <div className="bg-red-600 rounded-[60px] py-20 px-12 md:px-24 flex flex-col md:flex-row justify-between items-center gap-12 shadow-2xl shadow-red-900/30">
+          <div className="text-center md:text-left">
+            <h2 className="text-4xl font-black text-white uppercase tracking-tighter mb-4">Precision Engineering</h2>
+            <p className="text-white/80 font-bold uppercase tracking-widest text-xs">Certified compliance across all facility setups.</p>
           </div>
-          
-          <div className="relative z-10 px-8 md:px-24 grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl md:text-6xl font-black text-white mb-8 uppercase tracking-tighter leading-tight">
-                Specialized <span className="text-red-600">Leadlining</span> & Safety
-              </h2>
-              <p className="text-gray-400 text-lg font-medium mb-12 leading-relaxed">
-                Protect your staff and patients with our expert radiation shielding solutions. From design to certified installation, we ensure your facility meets all clinical safety regulations.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6">
-                <button className="bg-red-600 text-white px-12 py-5 rounded-[24px] font-black text-xs uppercase tracking-widest hover:bg-red-700 transition-all">Request Safety Audit</button>
-                <button className="bg-white/10 text-white border border-white/20 px-12 py-5 rounded-[24px] font-black text-xs uppercase tracking-widest hover:bg-white/20 transition-all">Download Portfolio</button>
-              </div>
+          <div className="flex gap-12 flex-wrap justify-center">
+            <div className="text-center">
+              <div className="text-4xl font-black text-white">99%</div>
+              <div className="text-white/60 text-[9px] font-black uppercase tracking-widest mt-2">Up-Time Guarantee</div>
             </div>
-            <div className="hidden md:block">
-              <div className="aspect-square bg-white/5 rounded-[40px] border border-white/10 p-8 flex flex-col justify-center gap-8">
-                <div className="space-y-2">
-                  <div className="text-red-600 text-4xl font-black">99.9%</div>
-                  <div className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Shielding Accuracy</div>
-                </div>
-                <div className="h-px bg-white/10 w-20"></div>
-                <div className="space-y-2">
-                  <div className="text-red-600 text-4xl font-black">Certified</div>
-                  <div className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Regulatory Compliance</div>
-                </div>
-              </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-white">24/7</div>
+              <div className="text-white/60 text-[9px] font-black uppercase tracking-widest mt-2">Technical Response</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl font-black text-white">ISO</div>
+              <div className="text-white/60 text-[9px] font-black uppercase tracking-widest mt-2">Standard Protocol</div>
             </div>
           </div>
         </div>

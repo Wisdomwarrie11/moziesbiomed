@@ -7,7 +7,7 @@ const AboutUs: React.FC = () => {
       <div className="bg-red-600 py-32 md:py-48 px-6 text-center relative">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
         <div className="relative z-10">
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter">The Mission <span className="text-red-950">Protocol</span></h1>
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-tighter">Why we are Here</h1>
           <div className="w-24 h-2 bg-white mx-auto rounded-full"></div>
         </div>
       </div>
@@ -32,7 +32,7 @@ const AboutUs: React.FC = () => {
           <div className="relative">
             <div className="aspect-[4/5] rounded-[60px] overflow-hidden shadow-[0_50px_100px_-20px_rgba(220,38,38,0.25)] border-[12px] border-gray-50">
               <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=800" 
+                src = "CT.jpeg" 
                 alt="Biomedical Engineering Team" 
                 className="w-full h-full object-cover"
               />

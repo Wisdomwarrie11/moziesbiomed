@@ -64,10 +64,6 @@ const Home: React.FC = () => {
             </div>
             
             <div className="space-y-10">
-              <div className="inline-flex items-center gap-4">
-                <div className="h-px w-12 bg-red-600"></div>
-                <span className="text-red-600 text-xs font-black uppercase tracking-[0.4em]">Corporate DNA</span>
-              </div>
               <h2 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tighter leading-[0.9] uppercase">
                 Redefining <span className="text-red-600">Clinical</span> Performance
               </h2>
@@ -88,7 +84,7 @@ const Home: React.FC = () => {
               </div>
               <div className="pt-8">
                 <Link to="/about" className="bg-gray-900 text-white px-12 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-red-600 transition-all shadow-2xl shadow-gray-900/20 inline-block">
-                  The Mission Protocol
+                  Our Mission
                 </Link>
               </div>
             </div>
@@ -97,7 +93,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Inventory: Precision Hardware */}
-      <section className="py-32 bg-gray-50 relative overflow-hidden">
+      {/* <section className="py-32 bg-gray-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-20 text-gray-100 font-black text-[20vw] leading-none select-none pointer-events-none uppercase tracking-tighter">
           TECH
         </div>
@@ -145,7 +141,7 @@ const Home: React.FC = () => {
             )}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Services Spectrum: Diversity in Support */}
       <section className="py-32 bg-white">

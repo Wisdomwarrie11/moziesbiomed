@@ -73,7 +73,7 @@ export const SERVICES_CONTENT = [
 export const HERO_SLIDES = [
   {
     image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1600',
-    title: 'Biomedical Engineering Excellence For Nigeria',
+    title: 'Biomedical Engineering Excellence',
     subtitle: 'Expert supply, installation, and maintenance of mission-critical medical hardware.'
   }
 ];
