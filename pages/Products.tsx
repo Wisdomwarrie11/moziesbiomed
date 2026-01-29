@@ -156,8 +156,7 @@ const Products: React.FC = () => {
           </div>
         ) : (
           <div className="text-center py-40">
-            <h2 className="text-2xl font-black text-gray-300 uppercase tracking-tighter italic">Portfolio Syncing</h2>
-            <p className="text-gray-400 font-bold uppercase tracking-widest text-xs mt-4">Consult our engineering team for custom deployments.</p>
+            <h2 className="text-2xl font-black text-gray-300 uppercase tracking-tighter italic">No product added yet</h2>
           </div>
         )}
       </div>
