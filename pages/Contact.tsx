@@ -9,7 +9,7 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const adminNumber = "2348000000000"; // Replace with actual admin number
+    const adminNumber = "+2348138969404"; // Replace with actual admin number
     const companyText = formData.company ? `, from ${formData.company}` : '';
     const message = `Hello my name is ${formData.name}${companyText}. I need your services.`;
     const encodedMessage = encodeURIComponent(message);

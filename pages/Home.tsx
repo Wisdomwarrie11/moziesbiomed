@@ -93,7 +93,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Inventory: Precision Hardware */}
-      {/* <section className="py-32 bg-gray-50 relative overflow-hidden">
+      <section className="py-32 bg-gray-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-20 text-gray-100 font-black text-[20vw] leading-none select-none pointer-events-none uppercase tracking-tighter">
           TECH
         </div>
@@ -141,7 +141,7 @@ const Home: React.FC = () => {
             )}
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Services Spectrum: Diversity in Support */}
       <section className="py-30 bg-white">
