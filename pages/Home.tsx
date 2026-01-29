@@ -93,50 +93,52 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Inventory: Precision Hardware */}
-      <section className="py-32 bg-gray-50 relative overflow-hidden">
+        <section className="py-32 bg-gray-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-20 text-gray-100 font-black text-[20vw] leading-none select-none pointer-events-none uppercase tracking-tighter">
           TECH
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-            <div className="max-w-2xl">
+          <div className="text-center mb-20 space-y-8">
+            <div className="max-w-2xl mx-auto">
               <h2 className="text-4xl md:text-6xl font-black text-gray-900 uppercase tracking-tighter mb-4">
-                Clinical <span className="text-red-600">Store</span>
+                Our <span className="text-red-600">Products</span>
               </h2>
-              <p className="text-gray-400 font-black uppercase tracking-[0.2em] text-[10px]">Direct Access to Mission-Critical Inventory</p>
+              <p className="text-gray-400 font-black uppercase tracking-[0.2em] text-[10px]">High-Performance Biomedical Equipment</p>
             </div>
-            <Link to="/products" className="group flex items-center gap-4 text-red-600 font-black text-xs uppercase tracking-[0.3em]">
-              View Full catalog
-              <span className="w-10 h-10 rounded-full border-2 border-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all">
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-              </span>
-            </Link>
+            <div className="flex justify-center">
+              <Link to="/products" className="group flex items-center gap-4 text-red-600 font-black text-xs uppercase tracking-[0.3em]">
+                View Full catalog
+                <span className="w-10 h-10 rounded-full border-2 border-red-600 flex items-center justify-center group-hover:bg-red-600 group-hover:text-white transition-all">
+                  <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </span>
+              </Link>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {featuredProducts.length > 0 ? featuredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-[50px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700 group flex flex-col h-full">
-                <div className="aspect-[4/3] rounded-[35px] overflow-hidden mb-8 relative bg-gray-50 shadow-inner">
+              <div key={product.id} className="bg-white rounded-[50px] p-8 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700 group flex flex-col h-full text-center items-center">
+                <div className="w-full aspect-[4/3] rounded-[35px] overflow-hidden mb-8 relative bg-gray-50 shadow-inner">
                   <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute top-6 left-6">
-                    <span className="bg-red-600/90 backdrop-blur-md text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl">
-                      {categories.find(c => c.id === product.categoryId)?.name || 'New Batch'}
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2">
+                    <span className="bg-red-600/90 backdrop-blur-md text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-xl whitespace-nowrap">
+                      {categories.find(c => c.id === product.categoryId)?.name || 'New Hardware'}
                     </span>
                   </div>
                 </div>
                 <h3 className="text-2xl font-black text-gray-900 mb-2 uppercase tracking-tight">{product.name}</h3>
-                <p className="text-red-600 text-xs font-black uppercase tracking-[0.2em] mb-4">{product.price || 'Quote Required'}</p>
+                <p className="text-red-600 text-xs font-black uppercase tracking-[0.2em] mb-4">{product.price || 'Quote Available'}</p>
                 <p className="text-gray-500 text-sm font-medium leading-relaxed mb-8 flex-grow line-clamp-3">
                   {product.description}
                 </p>
-                <Link to="/contact" className="w-full bg-gray-100 text-gray-900 py-5 rounded-[22px] font-black text-[10px] uppercase tracking-[0.2em] group-hover:bg-red-600 group-hover:text-white transition-all">
+                <Link to="/contact" className="w-full bg-gray-100 text-gray-900 py-5 rounded-[22px] font-black text-[10px] uppercase tracking-[0.2em] group-hover:bg-red-600 group-hover:text-white transition-all text-center flex items-center justify-center">
                   Inquire Now
                 </Link>
               </div>
             )) : (
               <div className="col-span-full py-20 text-center">
                 <div className="w-16 h-16 border-4 border-red-200 border-t-red-600 animate-spin rounded-full mx-auto mb-6"></div>
-                <p className="text-gray-400 font-black uppercase tracking-widest text-xs">Awaiting Inventory Dispatch...</p>
+                <p className="text-gray-400 font-black uppercase tracking-widest text-xs">Syncing Equipment Database...</p>
               </div>
             )}
           </div>
