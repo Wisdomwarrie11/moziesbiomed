@@ -312,7 +312,7 @@ const Admin: React.FC = () => {
                 
                 <div className="flex gap-4">
                    <button type="submit" disabled={uploading} className="flex-grow bg-red-600 text-white py-6 rounded-2xl font-black text-xs uppercase tracking-widest shadow-2xl shadow-red-900/20 hover:bg-red-700 transition-all">
-                     {editingProdId ? 'Apply Update' : 'Publish to Catalog'}
+                     {editingProdId ? 'Apply Update' : 'Move to Catalog'}
                    </button>
                    {editingProdId && (
                      <button type="button" onClick={resetProdForm} className="px-10 bg-gray-100 text-gray-500 rounded-2xl font-black text-xs uppercase hover:bg-gray-200 transition-colors">Cancel</button>
@@ -322,7 +322,7 @@ const Admin: React.FC = () => {
           </div>
 
           <div className="bg-white p-10 rounded-[50px] shadow-sm border border-gray-100 max-h-[600px] overflow-y-auto">
-             <h3 className="text-xl font-black text-gray-900 uppercase tracking-tight mb-8">Hardware Portfolio</h3>
+             <h3 className="text-xl font-black text-gray-900 uppercase tracking-tight mb-8">Available Products</h3>
              <div className="space-y-4">
                {products.map(p => (
                  <div key={p.id} className={`flex items-center gap-4 p-4 rounded-2xl group transition-all ${editingProdId === p.id ? 'bg-red-50 ring-1 ring-red-200' : 'bg-gray-50 hover:bg-white hover:shadow-lg'}`}>
