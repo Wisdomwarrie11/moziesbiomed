@@ -55,7 +55,7 @@ const Home: React.FC = () => {
 
 
       {/* Authority Section: Engineering Excellence */}
-      <section className="py-32 bg-white overflow-hidden">
+      <section className="py-3 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="relative">
@@ -71,7 +71,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="pt-12 space-y-6">
                   <div className="bg-gray-900 p-10 rounded-[40px] text-white">
-                    <div className="text-3xl font-black mb-2 tracking-tighter">500+</div>
+                    <div className="text-3xl font-black mb-2 tracking-tighter">100+</div>
                     <div className="text-[10px] font-black uppercase tracking-[0.3em] opacity-60">Engineering Projects</div>
                   </div>
                   <div className="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border-4 border-white transform hover:-rotate-2 transition-transform duration-500">
@@ -84,10 +84,6 @@ const Home: React.FC = () => {
             </div>
             
             <div className="space-y-10">
-              <div className="inline-flex items-center gap-4">
-                <div className="h-px w-12 bg-red-600"></div>
-                <span className="text-red-600 text-xs font-black uppercase tracking-[0.4em]">Corporate DNA</span>
-              </div>
               <h2 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tighter leading-[0.9] uppercase">
                 Redefining <span className="text-red-600">Biomedical</span> Performance
               </h2>
@@ -108,7 +104,7 @@ const Home: React.FC = () => {
               </div>
               <div className="pt-8">
                 <Link to="/about" className="bg-gray-900 text-white px-12 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.3em] hover:bg-red-600 transition-all shadow-2xl shadow-gray-900/20 inline-block">
-                  The Mission Protocol
+                  Our Mission
                 </Link>
               </div>
             </div>
@@ -119,7 +115,7 @@ const Home: React.FC = () => {
       {/* Featured Inventory: Precision Hardware */}
       <section className="py-32 bg-gray-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-20 text-gray-100 font-black text-[20vw] leading-none select-none pointer-events-none uppercase tracking-tighter">
-          TECH
+          MOZIES..
         </div>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="text-center mb-20 space-y-8">
@@ -175,19 +171,17 @@ const Home: React.FC = () => {
             <div className="bg-gray-900 p-16 rounded-[60px] text-white space-y-8 md:col-span-2 relative overflow-hidden group">
                <div className="absolute top-0 right-0 w-64 h-64 bg-red-600 rounded-full blur-[120px] opacity-20 -mr-32 -mt-32"></div>
                <div className="relative z-10">
-                 <span className="text-red-600 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering Cluster 01</span>
                  <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 leading-none">Maintenance <br/><span className="text-red-600">& Consultancy</span></h3>
                  <p className="text-gray-400 text-lg font-medium max-w-xl mb-10 leading-relaxed">
                    Strategic engineering services for equipment lifecycle management, radiation safety, and regulatory standard compliance.
                  </p>
                  <Link to="/services" className="inline-flex items-center gap-4 text-white font-black text-xs uppercase tracking-[0.3em] group-hover:text-red-600 transition-colors">
-                    Explore Engineering Matrix
+                    Explore OUR SERVICES
                     <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                  </Link>
                </div>
             </div>
             <div className="bg-red-600 p-16 rounded-[60px] text-white space-y-8 group hover:bg-red-700 transition-colors duration-500">
-               <span className="text-white/60 text-[10px] font-black uppercase tracking-[0.4em] block mb-4">Engineering Cluster 02</span>
                <h3 className="text-4xl font-black uppercase tracking-tighter mb-6 leading-none">Project <br/>Management</h3>
                <p className="text-white/80 text-sm font-bold uppercase tracking-widest leading-relaxed">
                  Turnkey facility engineering from design to operation.
@@ -212,15 +206,13 @@ const Home: React.FC = () => {
               Initialize Your <br/><span className="text-red-600 underline decoration-red-900/50 decoration-8 underline-offset-8 italic">Engineering Strategy</span>
             </h2>
             <p className="text-gray-400 text-lg md:text-xl font-bold uppercase tracking-[0.2em] max-w-2xl mx-auto">
-              Ready to deploy world-class biomedical solutions in your facility?
+              Ready to integrate world-class biomedical solutions in your facility?
             </p>
             <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
               <Link to="/contact" className="bg-red-600 text-white px-16 py-7 rounded-[28px] font-black text-xl hover:scale-105 hover:bg-red-700 transition-all shadow-2xl shadow-red-900/40 uppercase tracking-widest">
                 Start Consultation
               </Link>
-              <Link to="/gallery" className="text-white font-black text-xs uppercase tracking-[0.4em] hover:text-red-600 transition-colors border-b-2 border-white/10 hover:border-red-600 pb-2">
-                Review Project History
-              </Link>
+            
             </div>
           </div>
         </div>

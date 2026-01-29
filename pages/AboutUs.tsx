@@ -58,15 +58,15 @@ const AboutUs: React.FC = () => {
               
               <div className="pt-16 grid grid-cols-2 lg:grid-cols-4 gap-12">
                 <div className="group">
-                  <div className="text-4xl md:text-5xl font-black text-red-600 mb-2 group-hover:scale-110 transition-transform origin-left">500+</div>
-                  <div className="text-xs text-gray-500 font-black uppercase tracking-[0.2em]">Deployments</div>
+                  <div className="text-4xl md:text-5xl font-black text-red-600 mb-2 group-hover:scale-110 transition-transform origin-left">100+</div>
+                  <div className="text-xs text-gray-500 font-black uppercase tracking-[0.2em]">Projects</div>
                 </div>
                 <div className="group">
                   <div className="text-4xl md:text-5xl font-black text-red-600 mb-2 group-hover:scale-110 transition-transform origin-left">150+</div>
                   <div className="text-xs text-gray-500 font-black uppercase tracking-[0.2em]">Retainer Clients</div>
                 </div>
                 <div className="group">
-                  <div className="text-4xl md:text-5xl font-black text-red-600 mb-2 group-hover:scale-110 transition-transform origin-left">50+</div>
+                  <div className="text-4xl md:text-5xl font-black text-red-600 mb-2 group-hover:scale-110 transition-transform origin-left">23+</div>
                   <div className="text-xs text-gray-500 font-black uppercase tracking-[0.2em]">Certified Engineers</div>
                 </div>
                 <div className="group">
