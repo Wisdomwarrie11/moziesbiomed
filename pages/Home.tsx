@@ -55,7 +55,7 @@ const Home: React.FC = () => {
 
 
       {/* Authority Section: Engineering Excellence */}
-      <section className="py-3 bg-white overflow-hidden">
+      <section className="py-32 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-24 items-center">
             <div className="relative">
@@ -113,7 +113,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Featured Inventory: Precision Hardware */}
-      <section className="py-32 bg-gray-50 relative overflow-hidden">
+      <section className="py-3 bg-gray-50 relative overflow-hidden">
         <div className="absolute top-0 right-0 p-20 text-gray-100 font-black text-[20vw] leading-none select-none pointer-events-none uppercase tracking-tighter">
           MOZIES..
         </div>
